@@ -1,10 +1,8 @@
 #pragma once
-#ifndef EXPORT_DLL
-#define EXPORT_DLL __declspec(dllimport)
-#endif // !EXPORT_DLL
+#include <Core.h>
 
 namespace Imp {
-class  EXPORT_DLL Kaizen  {
+class EXPORT Kaizen  {
 public:
 	Kaizen();
 	~Kaizen();
