@@ -5,7 +5,7 @@ namespace Imp {
 class EXPORT Kaizen  {
 public:
 	Kaizen();
-	~Kaizen();
-	void printKaizen();
+	virtual ~Kaizen();
+	void run();
 	};
 }
