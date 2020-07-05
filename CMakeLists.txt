@@ -20,6 +20,7 @@ add_library(Kaiz SHARED)
 target_sources(Kaiz
                PRIVATE
                src/Kaizen.cpp
+			   src/Logger.cpp
 			   )
 
 target_compile_definitions(
