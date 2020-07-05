@@ -15,12 +15,18 @@ else()
 	list(APPEND EXTRA_LIBS
 		"-lGL -lGLU -lX11")
 endif()
-#################################################
+##############################################################################
 add_library(Kaiz SHARED)
 target_sources(Kaiz
                PRIVATE
                src/Kaizen.cpp
 			   )
+
+target_compile_definitions(
+	Kaiz
+	PRIVATE
+	EXPORT_DLL
+)
 
 target_include_directories(Kaiz 
 							PUBLIC
@@ -37,5 +43,4 @@ target_link_libraries(Kaizen
 					  ${GLEW_LIBRARIES} 
 					  #${EXTRA_LIBS} 
 					  Kaiz
-					  spdlog::spdlog 
-					  spdlog::spdlog_header_only)
+					  spdlog::spdlog)

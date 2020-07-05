@@ -1,6 +1,5 @@
 #include <Kaizen.h>
-#include <stdio.h>
-#include <iostream>
+
 namespace Imp {
 	Kaizen::Kaizen(){
 
