@@ -9,6 +9,7 @@ namespace Imp {
 		void init();
 		Logger();
 		~Logger();
+		
 		//inline static std::shared_ptr<spdlog::logger>& coreLog() { return coreLogger; }
 		//inline static std::shared_ptr<spdlog::logger>& clientLog() { return clientLogger; }
 	private:
