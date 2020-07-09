@@ -20,7 +20,6 @@ add_library(Kaiz SHARED)
 target_sources(Kaiz
                PRIVATE
                src/Kaizen.cpp
-			   src/Logger.cpp
 			   )
 
 target_compile_definitions(
@@ -35,7 +34,7 @@ target_include_directories(Kaiz
 
 include_directories(Kaiz ${GLEW_INCLUDE_DIRS})
 
-add_executable(Kaizen src/main.cpp)
+add_executable(Kaizen src/main.cpp src/Logger.cpp)
 
 target_link_libraries(Kaizen 
 					  PRIVATE

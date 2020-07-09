@@ -1,14 +1,20 @@
 #include <Kaizen.h>
 #include <Logger.h>
 
+
+//enum LOGGING
+//{
+//	KAIZEN_CORE Imp::Logger::coreLog()->warn("Intialized Log")
+//};
 int main() {
-	//auto console = spdlog::stdout_color_mt("console");
 	
 	std::unique_ptr<Imp::Kaizen> kai = std::make_unique<Imp::Kaizen>();
-	
-	std::shared_ptr<Imp::Logger> log = std::make_shared<Imp::Logger>();
-	log->init();
 	kai->run();
+	// Intialize logger
+	Imp::Logger::init();
+	Imp::Logger::coreLog()->warn("Intialized Log");
+	Imp::Logger::clientLog()->info("Hello");
+	
 	
 	
 	return 0;
