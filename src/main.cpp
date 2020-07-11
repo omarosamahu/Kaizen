@@ -5,9 +5,10 @@ int main() {
 	//auto console = spdlog::stdout_color_mt("console");
 	
 	std::unique_ptr<Imp::Kaizen> kai = std::make_unique<Imp::Kaizen>();
+	Imp::Logger::init();
+	Imp::Logger::coreLog()->warn("Core Logger intialized");
+	Imp::Logger::clientLog()->info("Hello ya 3m kaizen");
 	
-	std::shared_ptr<Imp::Logger> log = std::make_shared<Imp::Logger>();
-	log->init();
 	kai->run();
 	
 	
