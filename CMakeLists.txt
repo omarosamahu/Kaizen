@@ -34,11 +34,15 @@ target_include_directories(Kaiz
 
 include_directories(Kaiz ${GLEW_INCLUDE_DIRS})
 
+<<<<<<< HEAD
 add_executable(Kaizen 
 			   src/main.cpp 
 			   src/Logger.cpp
 			   src/EventSystem.cpp
 			   )
+=======
+add_executable(Kaizen src/main.cpp src/Logger.cpp)
+>>>>>>> 5e522e335790d9ad5cdc3b306a266e8d19d1cba7
 
 target_link_libraries(Kaizen 
 					  PRIVATE
