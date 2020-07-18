@@ -3,8 +3,10 @@
 #include <atomic>
 #include <list>
 #include <EventSystem.h>
-namespace es {
-	static const EventChannel::idType&  EventChannel::
+
+int main() {
+	std::cout << "Event system intialized" << std::endl;
+	return EXIT_SUCCESS;
 }
 
 

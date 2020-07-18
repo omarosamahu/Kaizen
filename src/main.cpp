@@ -4,27 +4,20 @@
 #include <thread>
 #include <functional>
 #include <unordered_map>
+#include <Event.h>
+ 
+es::RefrenceTable es::Handler::map;
 
-namespace es {
-	class EventListener {
-		template<typename U>
-		friend class EventChannel;
-	private:
-		std::function<void()> removeFunction;
-		bool removed;
-		EventListener() = delete;
-		inline EventListener(std::function<void()> remove_function) :removed(false) {
-			this->removeFunction = remove_function;
-		}
-	public:
-		inline void remove() {
-			this->removed = true;
-			removeFunction();
-		}
-	};
-}
 int main() {
+	{
+		es::Handler::addListener<es::MouseEvent>([](const es::Event & e) {
+			static_cast<const es::MouseEvent&>(e).applyEvent();
+			});
 
+		es::Handler::executeEvent(es::MouseEvent("Mouse"));
+	}
+	
+	es::Handler::executeEvent(es::KeyBoardEvent(10,"KeyBoard"));
 	std::unique_ptr<Imp::Kaizen> kai = std::make_unique<Imp::Kaizen>();
 	
 	Imp::Logger::init();

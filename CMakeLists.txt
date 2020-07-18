@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10.2)
 project(Kaizen C CXX)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 ############################### OpenGl Packages ##############################
 find_package(GLEW REQUIRED)
 find_package(OpenGl REQUIRED)
@@ -38,7 +38,7 @@ include_directories(Kaiz ${GLEW_INCLUDE_DIRS})
 add_executable(Kaizen 
 			   src/main.cpp 
 			   src/Logger.cpp
-			   src/EventSystem.cpp
+			   #src/EventSystem.cpp
 			   )
 
 #add_executable(Kaizen src/main.cpp src/Logger.cpp)
