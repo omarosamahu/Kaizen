@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <iostream>
 //Third party
-#include <spdlog/spdlog.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
+//#include <spdlog/spdlog.h>
+//#include <spdlog/sinks/stdout_color_sinks.h>
 //STL
 #include <array>
 #include <list>

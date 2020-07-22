@@ -4,21 +4,29 @@ namespace es {
 	class Event {
 	public:
 		//Event() = delete;
-		virtual ~Event(){}
-	private:
+		virtual ~Event() = default;
+
 		virtual void applyEvent() const = 0;
+
+		virtual std::string getID() const = 0;
+
 	};
+
 	class MouseEvent  : public Event {
 	private:
 		std::string msg;
 	public:
-		MouseEvent(std::string id) :msg(id) {
+		MouseEvent(std::string id) :msg(id) {}
 
-		}
-		virtual void applyEvent() const {
+		void applyEvent() const override {
 			std::cout << "Callback for " << msg << " Event has applied"<< std::endl;
 		}
+
+		std::string getID() const override {
+			return "MouseEvent";
+		}
 	};
+
 	class KeyBoardEvent : public Event {
 	private:
 		std::string mType;
@@ -28,24 +36,37 @@ namespace es {
 		KeyBoardEvent(uint32_t id,std::string type) :mId(id),mType(type) {
 
 		}
-		virtual void applyEvent() const {
+
+		void applyEvent() const override {
 			std::cout << "Callback for " << mType << " Event has applied with id: " << mId << std::endl;
 		}
+
+		std::string getID() const override {
+			return "KeyBoardEvent";
+		}
 	};
-	using Listener = std::function<const void(const Event&)>;
-	using RefrenceTable = std::unordered_map<const std::type_info*, std::function<const void(const Event&)>>;
+	using Listener      = std::function<void(const Event&)>;
+	using Listeners     = std::vector<Listener>;
+	using RefrenceTable = std::unordered_map<std::string, Listeners>;
+	
 
 	class Handler {
 	private:
 			static RefrenceTable map;
 	public:
-		template<typename EventWanted>
-		static void addListener(const Listener& lis) {
-			Handler::map.emplace(&typeid(EventWanted), lis);
+		static void addListener(const std::string& eventID, Listener lis) {
+			//map.emplace(eventID, lis);
+			map[eventID].emplace_back(lis);
 		}
+
 		static void executeEvent(const Event& event) {
-			for (const auto& item : map) {
-				item.second(event);
+			auto itr = map.find(event.getID());
+			if (itr == map.end()) {
+				return;
+			}
+
+			for(auto& func : itr->second) {
+				func(event);
 			}
 		}
 	};
