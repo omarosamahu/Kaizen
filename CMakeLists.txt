@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 ############################### OpenGl Packages ##############################
 find_package(GLEW REQUIRED)
 find_package(OpenGl REQUIRED)
-#find_package(spdlog CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
 ##############################################################################
 add_subdirectory(lib/glfw)
 
@@ -37,7 +37,7 @@ include_directories(Kaiz ${GLEW_INCLUDE_DIRS})
 
 add_executable(Kaizen 
 			   src/main.cpp 
-			   #src/Logger.cpp
+			   src/Logger.cpp
 			   #src/EventSystem.cpp
 			   )
 
@@ -51,5 +51,4 @@ target_link_libraries(Kaizen
 					  ${GLEW_LIBRARIES} 
 					  #${EXTRA_LIBS} 
 					  Kaiz
-					  #spdlog::spdlog
-					  )
+					  spdlog::spdlog)

@@ -9,11 +9,11 @@ namespace Imp {
 		Logger();
 		~Logger();
 		
-		//inline static std::shared_ptr<spdlog::logger> coreLog() { return coreLogger; }
-		//inline static std::shared_ptr<spdlog::logger> clientLog() { return clientLogger; }	
+		inline static std::shared_ptr<spdlog::logger> coreLog() { return coreLogger; }
+		inline static std::shared_ptr<spdlog::logger> clientLog() { return clientLogger; }	
 		
 	private:
-		//static std::shared_ptr<spdlog::logger> coreLogger;
-		//static std::shared_ptr<spdlog::logger> clientLogger;
+		static std::shared_ptr<spdlog::logger> coreLogger;
+		static std::shared_ptr<spdlog::logger> clientLogger;
 	};
 }
