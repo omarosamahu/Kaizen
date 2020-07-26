@@ -1,4 +1,4 @@
 .vs
+CMakeSettings.json
 build/
 out/
-*.json
